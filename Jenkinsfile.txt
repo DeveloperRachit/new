@@ -12,7 +12,21 @@ node {
 		 "echo 'shell scripts to build project...'"
         }
         stage ('Tests') {
-	       //junit 'C:/Program Files (x86)/Jenkins/workspace/ems/target/surefire-reports/TEST-com.aws.codestar.projecttemplates.controller.HelloWorldControllerTest.xml'
+	       parrallel 'static' :{
+	       "echo' shell script to run static tests....'"
+	      },
+	      
+	      'unit' :{
+	      sh "mvn test"
+	       "echo' shell script to run unit tests....'"
+	      },
+	      'integration' :{
+	      sh "mvn verify"
+	       "echo' shell script to run integration tests....'"
+	      }
+        }
+	 stage ('Deploy') {
+        	"echo' shell script to deploy to server....'"
         }
 	}
       	catch (err) {
