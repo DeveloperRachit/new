@@ -14,7 +14,7 @@ node {
         stage ('Tests') {
 	       //junit 'C:/Program Files (x86)/Jenkins/workspace/ems/target/surefire-reports/TEST-com.aws.codestar.projecttemplates.controller.HelloWorldControllerTest.xml'
         }
-	
+	}
       	catch (err) {
         currentBuild.result = 'FAILED'
         throw err
